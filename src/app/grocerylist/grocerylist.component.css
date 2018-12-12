@@ -1,0 +1,96 @@
+.item-inputfield{
+    margin-top: 20px;
+    margin-right: 5px;
+    border: 1px solid black;
+    border-top: 1px solid white;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.item-inputfield:focus{
+  outline: none;
+  border: 1px solid black;
+  border-top: 1px solid white;
+}
+
+.full-grocerylist{
+  color: black;
+  border-bottom: .5px solid orange;
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.editbtn{
+  background: transparent;
+  margin-right: 5px;
+}
+.editbtn:focus{
+  background: grey;
+  border: none;
+  outline: none;
+}
+
+.addbtn{
+  background: #41f468;
+  border: .5px solid black;
+  margin-top: 10px;
+}
+
+.updatebtn{
+  background: #b8f441;
+  border: .5px solid black;
+}
+
+.addbtn:hover, .updatebtn:hover{
+  background: transparent;
+}
+
+.demo{
+  border: .5px solid black;
+  border-radius: 3px;
+  height: auto;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.grocerydemo{
+  background: #71ed2f;
+}
+
+.heading{
+  border-bottom: .5px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.each-item{
+  border-bottom: .5px solid grey;
+}
+
+.box-check{
+  margin-right: 10px;
+}
+
+li{
+  list-style-type: none;
+}
+
+@media only screen and (max-width: 600px) {
+  h4{
+    margin-top: 35px;
+  }
+
+  .full-grocerylist{
+    margin-top: 25px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .item-inputfield{
+      margin-left: 0px;
+  }
+}

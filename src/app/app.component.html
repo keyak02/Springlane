@@ -1,21 +1,84 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<div>
+  <h1 *ngIf="this.paint" class="site-header">
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+  <h1 *ngIf="this.dark" class="site-header-dark">
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<!-- Loaded when the Theme is Paint -->
+<div *ngIf="this.paint" class="row">
+  <div  class="col-lg-offset-2 col-lg-10 col-md-offset-2 col-md-10 col-sm-offset-1 col-sm-11 col-xs-12">
+    <div  class=" col-lg-5 col-md-5 col-sm-5 col-xs-12 navtabdefault">
+      <span><i class="fas fa-home homebutton" (click) ="gotohome()"> Home</i></span>
+      <button class="btn navbtn1 defbutton" (click) ="todolistmanager()">Todo</button>
+      <button class="btn navbtn2 defbutton" (click) ="groceryListManager()">Groceries</button>
+    </div>
+
+    <div  class="col-lg-4 col-md-4 col-sm-5 col-xs-12 themepanel">
+      <span>Click to change Theme</span>
+      <button *ngIf="this.paint" class = "btn paintbtn" value = "dark" type="button" name="button" (click) ="themedark()">Paint</button>
+      <button *ngIf="this.dark" class = "btn darkbtn" value = "paint" type="button" name="button" (click) ="themepaint()">Dark</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Loaded when the Theme is Dark -->
+<div *ngIf="this.dark" class="row">
+  <div  class="col-lg-offset-2 col-lg-10 col-md-offset-2 col-md-10 col-sm-offset-1 col-sm-11 col-xs-12">
+    <div  class="col-lg-5 col-md-5 col-sm-12 col-xs-12 navtabdefault">
+      <span><i class="fas fa-home navbtn1-dark homebutton" (click) ="gotohome()"> Home</i></span>
+      <button class="btn navbtn1-dark defbutton" (click) ="todolistmanager()">Todo</button>
+      <button class="btn navbtn1-dark defbutton" (click) ="groceryListManager()">Groceries</button>
+    </div>
+
+<!-- Theme Panel -->
+    <div  class="col-lg-4 col-md-4 col-sm-5 col-xs-12 themepanel">
+      <span>Click to change Theme</span>
+      <button *ngIf="this.paint" class = "btn paintbtn" type="button" name="button" (click) ="themedark()">Paint</button>
+      <button *ngIf="this.dark" class = "btn darkbtn" type="button" name="button" (click) ="themepaint()">Dark</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.home" class="row">
+  <h4 class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-5 col-xs-offset-3 col-xs-6 each-item">A list looks like this</h4>
+</div>
+
+<!-- Grocery List Template -->
+<div *ngIf="this.home" class="row">
+  <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-5 col-xs-offset-3 col-xs-6 demo tododemo">
+    <div class="todo-heading">Todo list name</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Read</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Pay Bills</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Drink more water</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Call mom</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Book ticket</div>
+  </div>
+
+<!-- Grocery List Template -->
+  <div class="col-lg-2 col-md-2 col-sm-5 col-xs-offset-3 col-xs-6 demo grocerydemo">
+    <div class="todo-heading">Groceries</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Rice</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Milk</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Eggs</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Salad</div>
+    <div class="each-item"><i class="far fa-check-square box-check"></i>Oranges</div>
+  </div>
+</div>
+
+<app-todos  *ngIf="this.todolistpanel"></app-todos>
+<app-grocerylist *ngIf="this.showGroceryListManager"></app-grocerylist>
 <router-outlet></router-outlet>

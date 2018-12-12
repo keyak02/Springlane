@@ -1,0 +1,100 @@
+.full-todolist{
+  color: black;
+  border-bottom: .5px solid orange;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.task-inputfield{
+  margin: 5px 0px 5px 0px;
+  height: 35px;
+  width: 265px;
+  margin: 10px 5px 0px 0px;
+  border: 1px solid white;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.editbtn{
+  background: transparent;
+  margin-right: 5px;
+}
+
+.editbtn:focus{
+  background: grey;
+  border: none;
+  outline: none;
+}
+
+.addbtn{
+  background: #41f468;
+  border: .5px solid black;
+}
+
+.updatebtn{
+  background: #b8f441;
+  border: .5px solid black;
+}
+
+.addbtn:hover, .updatebtn:hover{
+  background: transparent;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.demo{
+  border: .5px solid black;
+  border-radius: 3px;
+  height: auto;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.tododemo{
+  background: #cded2f;
+}
+
+.heading{
+  border-bottom: .5px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.each-item{
+  border-bottom: .5px solid grey;
+}
+
+.box-check{
+  margin-right: 10px;
+}
+
+li{
+  list-style-type: none;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h4{
+    margin-top: 35px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+  }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

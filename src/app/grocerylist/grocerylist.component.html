@@ -1,0 +1,49 @@
+<h4 class="col-lg-offset-2 col-lg-6 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-11"> Grocery list</h4>
+
+      <!-- Grocery List Inputs -->
+      <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-6 col-xs-offset-1 col-xs-11">
+            <div class="input-group">
+              <form [formGroup]="groceryForm" (ngSubmit)= "additem()">
+                <input formControlName="name"  type="text" id="name"  class="col-lg-8 col-md-8 col-sm-8 col-xs-6 item-inputfield" placeholder="Enter Grocery items" />
+                <button  [disabled]="groceryForm.invalid" type="submit" value="name" name="button" class="btn addbtn">Add</button>
+              </form>
+            </div>
+        </div>
+
+      <!-- Loaded When on editing Mode -->
+      <div *ngIf="!this.grocerytheme" class="row">
+        <div class="col-lg-offset-2 col-lg-6 col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-6 col-xs-offset-1 col-xs-10">
+          <div class="full-grocerylist">Current list</div>
+            <ul class="list-group">
+                <li *ngFor="let items of itemlists; let i = index" class="list-group-item">
+                  <span class="close" (click) = "delete(i)"><i class="far fa-trash-alt"></i></span>
+                  <button (click) = "hide(i)" class="btn editbtn"type="button" name="button">|<i class="fas fa-edit"></i></button>
+                    <span >  {{ items }} </span>
+                </li>
+                <form *ngIf="this.showEditpanel" [formGroup]="groceryForm" (ngSubmit)= "updateitem()">
+                  <input  formControlName="name" type="text" class = "item-inputfield" id="name" placeholder= "Input updated Item here">
+                  <button [disabled]="groceryForm.invalid" type="submit" class = "btn updatebtn" value="name" name="button">Update</button>
+                </form>
+            </ul>
+            <button type="button" class= "btn addbtn" name="button" (click) = "saveasgrocerythemed()">Save</button>
+        </div>
+    </div>
+
+    <!-- Loaded When the list is saved -->
+    <div *ngIf="this.grocerytheme" class="row">
+      <div class="col-lg-offset-2 col-lg-2 col-lg-offset-2 col-md-2 col-sm-5 col-xs-offset-3 col-xs-6 demo grocerydemo">
+        <div class="heading">Grocery list</div>
+          <ul class="list-group">
+              <li *ngFor="let items of itemlists; let i = index" class="each-item">
+                <button class="btn editbtn"type="button" name="button"><i class="far fa-check-square box-check"></i></button>
+                  <span >  {{ items }} </span>
+              </li>
+              <form *ngIf="this.showEditpanel" [formGroup]="groceryForm" (ngSubmit)= "updateitem()">
+                <input  formControlName="name" type="text" class = "item-inputfield" id="name" placeholder= "Input updated Item here">
+                <button [disabled]="groceryForm.invalid" type="submit" class = "btn updatebtn" value="name" name="button">Update</button>
+              </form>
+          </ul>
+          <button type="button" class= "btn addbtn" name="button" (click) = "defaulttheme()">Edit</button>
+      </div>
+  </div>

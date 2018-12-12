@@ -1,0 +1,48 @@
+<h4 class="col-lg-offset-2 col-lg-6 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-6"> Todo list</h4>
+
+<!--  Todo Inputs -->
+<div class="row">
+  <div class="col-lg-offset-2 col-lg-6 col-md-offset-2 col-md-6 col-sm-offset-1 col-sm-6 col-xs-offset-1 col-xs-11 ">
+    <form  [formGroup]="todoForm" (ngSubmit)= "add()" >
+      <input formControlName="task"  class = "task-inputfield" type="text" id="task" placeholder= "Input Task here">
+      <button [disabled]="todoForm.invalid" type="submit" value="task" name="button" class="btn addbtn">Add</button>
+    </form>
+  </div>
+</div>
+
+<!-- Loaded When on editing Mode -->
+<div *ngIf="!this.todotheme" class="row">
+  <div class="col-lg-offset-2 col-lg-6 col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-6 col-xs-offset-1 col-xs-10">
+    <div class="full-todolist">Current list</div>
+    <ul class="list-group">
+        <li *ngFor="let worklist of worklists; let i = index" class="list-group-item">
+          <span class="close" (click) = "delete(i)"><i class="far fa-trash-alt"></i></span>
+          <button (click) = "hide(i)" class="btn editbtn focusit" type="button" name="button">|<i class="fas fa-edit"></i></button>
+            <span >  {{ worklist }} </span>
+        </li>
+        <form *ngIf="this.showEdit" [formGroup]="todoForm" (ngSubmit)= "update(i)">
+          <input  formControlName="task" type="text" id="task" class= "task-inputfield" placeholder= "Input updated Task here">
+          <button [disabled]="todoForm.invalid" type="submit" class = "btn updatebtn" value="task" name="button">Update</button>
+        </form>
+    </ul>
+    <button type="button" class= "btn addbtn" name="button" (click) = "saveastodothemed()">Save</button>
+  </div>
+</div>
+
+<!-- Loaded When the list is saved -->
+<div *ngIf="this.todotheme" class="row">
+  <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-5 col-xs-offset-3 col-xs-6 demo tododemo">
+    <div class="heading">Todo list</div>
+    <ul class="list-group">
+        <li *ngFor="let worklist of worklists; let i = index">
+          <button (click) = "hide(i)" class="btn editbtn focusit" type="button" name="button"><i class="far fa-check-square box-check"></i></button>
+            <span >  {{ worklist }} </span>
+        </li>
+        <form *ngIf="this.showEdit" [formGroup]="todoForm" (ngSubmit)= "update(i)">
+          <input  formControlName="task" type="text" id="task" class= "task-inputfield" placeholder= "Input updated Task here">
+          <button [disabled]="todoForm.invalid" type="submit" class = "btn updatebtn" value="task" name="button">Update</button>
+        </form>
+    </ul>
+    <button type="button" class= "btn addbtn" name="button" (click) = "defaulttheme()">Edit</button>
+  </div>
+</div>
